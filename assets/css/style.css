@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+/* 変数の定義 */
+:root {
+  --page-max: 1000px; /* ページ外枠の最大幅（背景/大きなグリッド） */
+  --container-max: 1000px; /* 本文コンテンツの最大幅（可読幅） */
+  --min-page: 375px; /* サイトの最小想定幅（レイアウト崩れ防止） */
+  --gutter: clamp(16px, 4vw, 32px); /* 端の余白：fluid */
+}
+html {
+  scroll-behavior: smooth;
+  /* コンテンツ幅でのフォントサイズ */
+  font-size: clamp(1px, calc(10px / 1000px * 100vw), 10px);
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  max-width: var(--page-max);
+  min-width: var(--min-page);
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 8px rgba(33, 33, 33, 0.5);
+}
+
+html,
+body {
+}
+main {
+}
+
+/* 画面全体ラッパー */
+.l-app {
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  /* iOSのノッチ・ホームバー分の安全マージン */
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
+
+/* 必要なら、背景色やレイアウト全体をここで指定 */
+.l-app {
+  padding: 5rem 0 10rem;
+  background-color: #fff;
+  background-color: antiquewhite;
+}
+
+img {
+  display: block;
+  width: 79.8rem;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+a {
+  transition: 0.3s;
+}
+a:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+/*  */
+h2 {
+  margin: 1em 0;
+  padding-left: 10%;
+  font-size: 4.8rem;
+  text-align: left;
+}
+
+/* ①ふわ～ん＆キラーン */
+.btn-anim-fuwakira {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scale-up-down 2s infinite ease-in-out;
+  overflow: hidden;
+}
+@keyframes scale-up-down {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  40%,
+  60% {
+    transform: translateX(-50%) scale(1.0416);
+  }
+}
+.btn-anim-fuwakira:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  left: 50%;
+  clip-path: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
+  background: linear-gradient(
+    130deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shine 1.5s ease infinite;
+  pointer-events: none;
+  z-index: 99999;
+}
+@keyframes shine {
+  0% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* ②ぴよぴよ */
+.btn-anim-piyopiyo {
+  animation: animation-piyopiyo 1.6s ease-in infinite;
+}
+@keyframes animation-piyopiyo {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  10% {
+    transform: translateX(-50%) scale(1.06);
+  }
+  20% {
+    transform: translateX(-50%) scale(1);
+  }
+  30% {
+    transform: translateX(-50%) scale(1.06);
+  }
+  40% {
+    transform: translateX(-50%) scale(1);
+  }
+  70%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* ③ほわ～ん */
+.btn-anim-howan {
+  animation: animation-howan 2s infinite;
+}
+@keyframes animation-howan {
+  0% {
+    transform: translateX(-50%) scale(0.9);
+    -webkit-transform: translateX(-50%) scale(0.9);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.02);
+    -webkit-transform: translateX(-50%) scale(1.02);
+  }
+  100% {
+    transform: translateX(-50%) scale(0.9);
+    -webkit-transform: translateX(-50%) scale(0.9);
+  }
+}
+
+/* ④ぶるっ */
+.btn-anim-buru {
+  animation: animation-buru 2s ease 0.4s forwards infinite;
+}
+@keyframes animation-buru {
+  90% {
+    transform: translateX(-50%);
+  }
+  93% {
+    transform: translateX(-52%);
+  }
+  96% {
+    transform: translateX(-49%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ⑤ゆらゆら */
+.btn-anim-yurayura {
+  animation: animation-yurayura 1.8s ease forwards infinite;
+}
+@keyframes animation-yurayura {
+  0% {
+    transform: translateX(-50%) skewX(5deg);
+  }
+  10% {
+    transform: translateX(-50%) skewX(-4deg);
+  }
+  20% {
+    transform: translateX(-50%) skewX(3.5deg);
+  }
+  30% {
+    transform: translateX(-50%) skewX(-3deg);
+  }
+  40% {
+    transform: translateX(-50%) skewX(2.5deg);
+  }
+  50% {
+    transform: translateX(-50%) skewX(-2deg);
+  }
+  60% {
+    transform: translateX(-50%) skewX(1.5deg);
+  }
+  70% {
+    transform: translateX(-50%) skewX(-1deg);
+  }
+  80% {
+    transform: translateX(-50%) skewX(0.5deg);
+  }
+  90% {
+    transform: translateX(-50%) skewX(0deg);
+  }
+  100% {
+    transform: translateX(-50%) skewX(0deg);
+  }
+}
+
+/* ⑥とんとん */
+.btn-anim-tonton {
+  animation: animation-tonton 3s ease infinite;
+}
+@keyframes animation-tonton {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  5% {
+    transform: translateX(-50%) translateY(0);
+  }
+  10% {
+    transform: translateX(-50%) translateY(0);
+  }
+  20% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+  25% {
+    transform: translateX(-50%) translateY(0);
+  }
+  30% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ⑦波紋 */
+.btn-anim-hamon {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.2s;
+  z-index: 1;
+}
+.btn-anim-hamon:before,
+.btn-anim-hamon:after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  border-radius: 9999px;
+  background: #a6f9ff;
+  transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1);
+}
+.btn-anim-hamon:before {
+  animation: animation-hamon 1s ease-out infinite;
+}
+.btn-anim-hamon:after {
+  animation: animation-hamon 1s ease-out 1s infinite;
+}
+@keyframes animation-hamon {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(0.95);
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  to {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1.2, 1.4);
+    opacity: 0;
+  }
+}
